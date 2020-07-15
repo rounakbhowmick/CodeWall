@@ -1,10 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.time.LocalDate;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,16 +13,16 @@ import dao.BlogDaoImpl;
 import model.Blog;
 
 /**
- * Servlet implementation class BlogController
+ * Servlet implementation class viewAllBlogController
  */
-@WebServlet(urlPatterns = "/new")
-public class BlogController extends HttpServlet {
+@WebServlet("/allblogs")
+public class viewAllBlogController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BlogController() {
+    public viewAllBlogController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,9 +34,19 @@ public class BlogController extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		System.out.println("getting into add new blog");
-		RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/WEB-INF/views/blogListView.jsp");
-		rd.forward(request, response);
+		System.out.println("View all blogs");
+		System.out.println("getting all blog post");
+		BlogDaoImpl blogDao = new BlogDaoImpl();
+		List <Blog> listBlog = blogDao.selectAllBlogs();
+		
+		for(Blog bloglist: listBlog) {
+			System.out.print(bloglist.getBlogId());
+			System.out.print(bloglist.getBlogDescription());
+			System.out.print(bloglist.getBlogTitle());
+			System.out.print(bloglist.getPostedOn());
+
+		}
+
 		
 	}
 
@@ -47,26 +55,7 @@ public class BlogController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		
-		System.out.println("Entering doPost");
-		String blogTitle = request.getParameter("title");
-		String blogDescription = request.getParameter("message");
-		LocalDate postedOn = LocalDate.now();
-		
-		Blog blog  = new Blog();
-		blog.setBlogDescription(blogDescription);
-		blog.setPostedOn(postedOn);
-		
-		BlogDaoImpl blogDao = new BlogDaoImpl();
-		try {
-			blogDao.insertBlog(blog);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		response.sendRedirect("login");
-		
+		doGet(request, response);
 	}
 
 }

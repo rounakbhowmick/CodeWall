@@ -55,7 +55,7 @@ public class LoginController extends HttpServlet {
 		UserDao userdao  = new UserDao();
 		boolean validateUser = userdao.loginUser(user);
 		if(validateUser) {
-			RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+			RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/WEB-INF/views/blogView.jsp");
 			rd.forward(request, response);
 		}
 		else {

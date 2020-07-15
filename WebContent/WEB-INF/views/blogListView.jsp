@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="./css/blog.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
+
 <body>
 	<nav>
 		<img src="./assets/logo.svg" alt = "">
@@ -18,10 +19,11 @@
 			<li> <a href="${pageContext.request.contextPath}/signup">SignUp</a></li>
 		</ul>	
 	</nav>
-	<div class=body-div1">
-	<div > Your Blogs Post</div>
-	<a href="${pageContext.request.contextPath}/new"><button class= "button" id="addBlog">
-	<i class="fas fa-plus-circle"></i>Add New Post</button></a>
-	</div>
+	
+	<form action="${pageContext.request.contextPath}/new " method="post"> 
+	<input id="title" name="title" placeholder="Title" type="text" />
+	<textarea id="msg" name="message" placeholder="Description"></textarea>
+	<button id="post" type="submit" > POST</button>
+	</form>
 </body>
 </html>

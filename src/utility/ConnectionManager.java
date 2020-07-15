@@ -32,6 +32,10 @@ public class ConnectionManager {
 		final String url = prop.getProperty("url");
 		final String username = prop.getProperty("username");
 		final String password = prop.getProperty("password");
+
+//		System.out.println(driver);
+//		System.out.println(url);
+//		System.out.println(username);
 		
 		try {	
 			Class.forName(driver);
