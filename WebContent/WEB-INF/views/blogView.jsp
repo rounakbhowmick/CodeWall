@@ -22,6 +22,29 @@
 	<div > Your Blogs Post</div>
 	<a href="${pageContext.request.contextPath}/new"><button class= "button" id="addBlog">
 	<i class="fas fa-plus-circle"></i>Add New Post</button></a>
+	
+	</div>
+	
+	<div class="body-div2>
+		<c:forEach var="blog" items=${listBlog}>
+		<div class="article-card" >
+			<img src = "./assets/java_card_image.svg" alt="">
+			<div class="card-test" >
+				<h1 id = "blog-title">
+					<c:out value="${blog.getBlogTitle()}"/>
+				</h1>
+				<p id="blog-description">
+					<c:out value="${blog.getBlogDescription()}"/>
+				</p>
+				<p> Posted On
+					<c:out value="${getPostedOn()}" />
+				</p>
+			</div>
+			
+			<div class="card-buttons">
+			
+			</div>
+		</div>
 	</div>
 </body>
 </html>

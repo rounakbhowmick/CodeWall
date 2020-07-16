@@ -24,6 +24,7 @@
 	<input id="title" name="title" placeholder="Title" type="text" />
 	<textarea id="msg" name="message" placeholder="Description"></textarea>
 	<button id="post" type="submit" > POST</button>
+	<button id="post" type="submit" > POST</button>
 	</form>
 </body>
 </html>

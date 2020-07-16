@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +47,9 @@ public class viewAllBlogController extends HttpServlet {
 			System.out.print(bloglist.getPostedOn());
 
 		}
-
+		request.setAttribute("listBlog", listBlog);
+		RequestDispatcher rd = this.getServletContext().getRequestDispatcher("WEB-ING/views/blogView.jsp");
+		rd.forward(request, response);
 		
 	}
 
